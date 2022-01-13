@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>701</width>
+    <height>589</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QGraphicsView" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>270</y>
+      <width>401</width>
+      <height>192</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="timerLabel">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Timer:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="startButton">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>140</y>
+      <width>84</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Start</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="quitButton">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>20</y>
+      <width>84</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Quit</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="diskAmount">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>150</y>
+      <width>49</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>100</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="diskLabel">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>130</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Amount of disks:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="infoLabel">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>190</y>
+      <width>381</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Enter the amount of disks and click start to play! </string>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="minuteLCD">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>20</y>
+      <width>64</width>
+      <height>23</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="secondLCD">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>50</y>
+      <width>64</width>
+      <height>23</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="minuteLabel">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>20</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>min</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="secondLabel">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>50</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sec</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="restartButton">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>140</y>
+      <width>84</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Restart</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Alabel">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>250</y>
+      <width>16</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>A</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="BLabel">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>250</y>
+      <width>16</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>B</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>250</y>
+      <width>16</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>C</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="keyLabel">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>220</y>
+      <width>471</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bestTimeLabel">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>20</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Best time:</string>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="bestMinLCD">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>20</y>
+      <width>64</width>
+      <height>23</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="bestSecLCD">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>50</y>
+      <width>64</width>
+      <height>23</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="movesSoFar">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>180</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Moves so far:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="movesLeft">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>200</y>
+      <width>161</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Moves left for miminum </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="movesUsed">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>180</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="movesLeftNum">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>200</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>701</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>quitButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>561</x>
+     <y>205</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>350</x>
+     <y>294</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

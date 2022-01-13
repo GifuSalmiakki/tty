@@ -1,0 +1,19 @@
+Instructions for the GUI project "Tower of Hanoi"
+Programming 2: Basics TIE-02201 Summer 2020
+Suvi Suominen, suomines, 284432, suvi.suominen@tuni.fi
+
+The program uses the amount of disks the user has given before the game starts. The maximum value of the disks is 10, and the minimum 0. The program gives an error message if the user uses values not in that range. 
+
+When the game starts, the number keys 1-6 can be used to play the game with the following uses: 1: A-B, 2: B-C, 3: C-B, 4: B-A, 5: A-C and 6: C-A. Where the letters represent the three poles, from left to right: A, B and C. For example: pressing the key 4 moves the top-most disk (if there is any and if this move is allowed) from the middle pole to the first pole. 
+
+The main objective is to move all the disks from one pole to another, without breaking the order of the disks i.e. not setting a bigger disk on top of a smaller one. If the user makes an illegal move (sets a bigger disk on top of a smaller one) the game gives an error message and ends. The user can restart the game at any point.
+
+The game displays the time used so far as well as the best score (best time) so far. The best time is checked after the user has won the game. 
+The game also calculates the minimum moves needed to win, and how many moves the user has played so far.
+
+The additional features implemented:
+
+-a timer that displays used time so far
+-the best time is saved and shown to the player
+-the game can be restarted without closing it
+-the miminum moves needed is calculated with how far the user is from that i.e. how many moves is used so far
