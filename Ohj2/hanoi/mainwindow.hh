@@ -8,8 +8,7 @@
  * of the disks i.e. not setting a bigger disk on top of a
  * smaller one.
  *
- * Programmer: Suvi Suominen, studentID: suomines,
- * e-mail: suvi.suominen@tuni.fi, studentNRO: 284432
+ * 
  */
 
 #ifndef MAINWINDOW_HH
