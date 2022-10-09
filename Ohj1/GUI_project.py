@@ -1,6 +1,5 @@
 """
 TIE-02101 Johdatus ohjelmointiin kesä 2019 / Introduction to programming Summer 2019
-Suvi Suominen, studentID: 284432, suvi.suominen@tuni.fi
 
 Ohjelma on yksinkertainen esitys hirsipuu-pelistä, jossa käyttäjä joko syöttää
 tekstikenttään arvattavan sanan, tai painaa random-nappia, jolloin ohjelma arpoo
