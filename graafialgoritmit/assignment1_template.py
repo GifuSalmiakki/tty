@@ -6,6 +6,8 @@ from icecream import ic
 
 
 ## Implement your algorithm here:
+
+# BFS algorithm
 def algorithm(g, B, v, w):
 
     start_node = v
@@ -13,26 +15,21 @@ def algorithm(g, B, v, w):
 
     visited_nodes = []
     queue = [start_node]
-
     shortest_path = []
-    if start_node == target_node:
-        return 0
 
-    while queue:
-
+    while len(queue) != 0:
         current_node = queue.pop(0)
-        if current_node not in visited_nodes:
-            visited_nodes.append(current_node)
-            neighbours = g[current_node]
-            for neighbour in neighbours:
-                new_path = current_node
-                new_path.append(neighbour)
-                queue.append(new_path)
 
-                if neighbour == target_node:
-                    print(shortest_path)
+        if current_node == target_node:
+            return
 
-        visited_nodes.append(node)
+        visited_nodes.append(current_node)
+        neighbours = g.adj[current_node]
+
+        for neighbour in neighbours:
+            if neighbour not in visited_nodes:
+                visited_nodes.append(neighbour)
+                queue.append(neighbour)
 
     nodes_of_B_on_path = 0
     for node in shortest_path:
