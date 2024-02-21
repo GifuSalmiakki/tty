@@ -1,8 +1,9 @@
 # This is an implementation of the Task 1: Token race
 
 # Since the token is passed randomly, the likelihood of the token
-# being with any player is higher, the more central that player is in the game
+# being with any one player is higher, the more central that player is in the game
 # I.e. the more edges connected to the node, the more likely it is to get a token from another node
+# The points can be estimated with PageRank algorithm
 
 import graph
 import numpy as np
@@ -63,8 +64,7 @@ if __name__ == "__main__":
   # Graph is the first command line argument:
   g = graph.Graph()
   g.readgraph(sys.argv[1])
-  #file = "~/tty/graafialgoritmit/testgraph_1"
-  #g.readgraph(file)
+
   A = adjacencyMatrix(g)
   pageRank(A)
 
