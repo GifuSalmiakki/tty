@@ -25,14 +25,12 @@ def adjacencyMatrix(g):
       # if there is an egde from node i to node j, add 1 to respective cell
       if (j+1) in g.adj[i+1]:
         A[i][j] = 1
-      else:
-        A[i][j] = 0
-  print(A)
+
   return A
 
 # probability of token going to random node = 0.01
 # probability of token going to chosen neighbour, d = 0.99 (1.00 - 0.01)
-def pageRank(A, random_prob = 0.01, iterations = 10):
+def pageRank(A, random_prob = 0.01, iterations = 1000):
 
   n = A.shape[0]
   pagerank_scores = np.ones(n) / n
@@ -49,15 +47,20 @@ def pageRank(A, random_prob = 0.01, iterations = 10):
       break
 
   pagerank_scores = new_scores
-  print(pagerank_scores)
   return pagerank_scores
 
-def rankNodePoints(pagerank_scores, A):
+def rankNodePoints(pagerank_scores, g):
 
-  top_nodes = []
+  # we cannot sort the pagerank scores without losing which node it connects to
+  # so the score and node must be connected first
+  node_and_score = {}
+  for node in range(g.n-1):
+    node_and_score[node] = pagerank_scores[node]
 
+  # sorting the dictionary in descending order by score (value)
+  sorted_nodes = sorted(node_and_score.items(), key=lambda x: x[1], reverse=True)
 
-  return top_nodes
+  return sorted_nodes[0:9]
 
 ### If ran from the command line:
 if __name__ == "__main__":
@@ -66,5 +69,9 @@ if __name__ == "__main__":
   g.readgraph(sys.argv[1])
 
   A = adjacencyMatrix(g)
-  pageRank(A)
+  pagerank_scores = pageRank(A)
+
+  top_players = rankNodePoints(pagerank_scores, g)
+  print(top_players)
+
 
