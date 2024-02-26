@@ -11,7 +11,7 @@ import sys
 
 # Matrix where connection (edge) from node u to node v is represented by 1
 # No connection is 0
-def adjacencyMatrix(g):
+def createAdjacencyMatrix(g):
 
   # n*n matrix initialized
   # in programming index starts at 0 but the first node is 1
@@ -38,7 +38,6 @@ def pageRank(A, random_prob = 0.01, iterations = 1000):
   for i in range(iterations):
     # matrix-vector multiplication
     new_scores = A.dot(pagerank_scores)
-
     # counting in the probability of choosing random  node
     new_scores = random_prob + (1 - random_prob)*new_scores
 
@@ -60,7 +59,13 @@ def rankNodePoints(pagerank_scores, g):
   # sorting the dictionary in descending order by score (value)
   sorted_nodes = sorted(node_and_score.items(), key=lambda x: x[1], reverse=True)
 
-  return sorted_nodes[0:9]
+  # sorting creates a list of the dict for some reason I'm too lazy to bother fixing
+  # so here we are grabbing only the keys (nodes)
+  top_nodes = []
+  for i in range(9):
+    top_nodes.append(sorted_nodes[i][0])
+
+  return top_nodes
 
 ### If ran from the command line:
 if __name__ == "__main__":
@@ -68,7 +73,7 @@ if __name__ == "__main__":
   g = graph.Graph()
   g.readgraph(sys.argv[1])
 
-  A = adjacencyMatrix(g)
+  A = createAdjacencyMatrix(g)
   pagerank_scores = pageRank(A)
 
   top_players = rankNodePoints(pagerank_scores, g)
