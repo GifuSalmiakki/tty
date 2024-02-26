@@ -14,25 +14,24 @@ import sys
 def createAdjacencyMatrix(g):
 
   # n*n matrix initialized
-  # in programming index starts at 0 but the first node is 1
-  # so indices are fixed to start at 1 throughout
-  A = np.zeros((g.n-1, g.n-1))
+  A = np.zeros((g.n, g.n))
 
   # iterating through each cell in the matrix
-  for i in range(g.n-1):
-    for j in range(g.n-1):
+  for i in range(g.n):
+    for j in range(g.n):
 
       # if there is an egde from node i to node j, add 1 to respective cell
-      if (j+1) in g.adj[i+1]:
+      if j in g.adj[i]:
         A[i][j] = 1
 
   return A
 
 # probability of token going to random node = 0.01
 # probability of token going to chosen neighbour, d = 0.99 (1.00 - 0.01)
-def pageRank(A, random_prob = 0.01, iterations = 1000):
+def pageRank(A, random_prob = 0.01, iterations = 10000):
 
   n = A.shape[0]
+  # at first, equal odds for each sell
   pagerank_scores = np.ones(n) / n
 
   for i in range(iterations):
@@ -53,7 +52,7 @@ def rankNodePoints(pagerank_scores, g):
   # we cannot sort the pagerank scores without losing which node it connects to
   # so the score and node must be connected first
   node_and_score = {}
-  for node in range(g.n-1):
+  for node in range(g.n):
     node_and_score[node] = pagerank_scores[node]
 
   # sorting the dictionary in descending order by score (value)
