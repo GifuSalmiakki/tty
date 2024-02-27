@@ -21,7 +21,7 @@ def createAdjacencyMatrix(g):
   for i in range(g.n):
     for j in range(g.n):
 
-      # if there is an egde from node i to node j, add 1/(outgoing edges) to respective cell
+      # if there is an egde from node i to node j, add 1/(num of outgoing edges) to respective cell
       if (j) in g.adj[i]:
         A[i][j] = 1/len(g.adj[i])
 
@@ -31,7 +31,7 @@ def createAdjacencyMatrix(g):
 
 # probability of token going to random node = 0.01
 # probability of token going to chosen neighbour, d = 0.99 (1.00 - 0.01)
-def pageRank(A, random_prob = 0.01, iterations = 10):
+def pageRank(A, random_prob = 0.01, iterations = 10000):
 
   # at first, calculating equal odds for each node
   n = A.shape[0]
@@ -65,8 +65,8 @@ def rankNodePoints(pagerank_scores, g):
   # sorting creates a list around the dict for some reason I'm too lazy to bother fixing
   # so here we are grabbing only the keys (nodes)
   top_nodes = []
-  for i in range(9):
-    if len(sorted_nodes) >= 9:
+  for i in range(10):
+    if len(sorted_nodes) > 9:
       top_nodes.append(sorted_nodes[i][0])
 
   return top_nodes
