@@ -14,29 +14,33 @@ import sys
 def createAdjacencyMatrix(g):
 
   # n*n matrix initialized
+  # assuming first node is 0
   A = np.zeros((g.n, g.n))
 
   # iterating through each cell in the matrix
   for i in range(g.n):
     for j in range(g.n):
 
-      # if there is an egde from node i to node j, add 1 to respective cell
-      if j in g.adj[i]:
-        A[i][j] = 1
+      # if there is an egde from node i to node j, add 1/(outgoing edges) to respective cell
+      if (j) in g.adj[i]:
+        A[i][j] = 1/len(g.adj[i])
 
+  # for the matrix to describe incoming links, flipping rows to columns
+  A = np.transpose(A)
   return A
 
 # probability of token going to random node = 0.01
 # probability of token going to chosen neighbour, d = 0.99 (1.00 - 0.01)
-def pageRank(A, random_prob = 0.01, iterations = 10000):
+def pageRank(A, random_prob = 0.01, iterations = 10):
 
+  # at first, calculating equal odds for each node
   n = A.shape[0]
-  # at first, equal odds for each sell
   pagerank_scores = np.ones(n) / n
 
   for i in range(iterations):
     # matrix-vector multiplication
     new_scores = A.dot(pagerank_scores)
+
     # counting in the probability of choosing random  node
     new_scores = random_prob + (1 - random_prob)*new_scores
 
@@ -58,11 +62,12 @@ def rankNodePoints(pagerank_scores, g):
   # sorting the dictionary in descending order by score (value)
   sorted_nodes = sorted(node_and_score.items(), key=lambda x: x[1], reverse=True)
 
-  # sorting creates a list of the dict for some reason I'm too lazy to bother fixing
+  # sorting creates a list around the dict for some reason I'm too lazy to bother fixing
   # so here we are grabbing only the keys (nodes)
   top_nodes = []
   for i in range(9):
-    top_nodes.append(sorted_nodes[i][0])
+    if len(sorted_nodes) >= 9:
+      top_nodes.append(sorted_nodes[i][0])
 
   return top_nodes
 
