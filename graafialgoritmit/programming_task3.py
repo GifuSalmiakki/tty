@@ -8,6 +8,7 @@
 import graph
 import numpy as np
 import sys
+import randomgraphs
 
 # Matrix where connection (edge) from node u to node v is represented by 1
 # No connection is 0

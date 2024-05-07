@@ -1,0 +1,21 @@
+.container {
+  min-height: 600px;
+  min-width: 600px;
+}
+
+.swot {
+  width: 48vw;
+  height: 48vh;
+  border-color: blue;
+  border-style: groove;
+  display: flex;
+  grid-template-areas: 1fr 1fr / 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

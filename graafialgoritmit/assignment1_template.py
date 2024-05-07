@@ -7,36 +7,41 @@ from icecream import ic
 
 ## Implement your algorithm here:
 
+# Helper function for finding the path
+def backtrace(crawl, start_node, target_node):
+    path = [target_node]
+    while path[-1] != start_node:
+        path.append(crawl[path[-1]])
+
+    # note: path is in reverse
+    return path
+
 # BFS algorithm
 def algorithm(g, B, v, w):
 
     start_node = v
     target_node = w
 
-    visited_nodes = []
     queue = [start_node]
-    shortest_path = []
-
+    crawl = {}
     while len(queue) != 0:
         current_node = queue.pop(0)
 
         if current_node == target_node:
-            return
+            path = backtrace(crawl, start_node, target_node)
+            # path found, now checking for how many nodes are of set B
+            nodes_of_B_on_path = 0
+            for node in path:
+                if node in B:
+                    nodes_of_B_on_path += 1
+            return nodes_of_B_on_path
 
-        visited_nodes.append(current_node)
         neighbours = g.adj[current_node]
-
         for neighbour in neighbours:
-            if neighbour not in visited_nodes:
-                visited_nodes.append(neighbour)
+            if neighbour not in queue:
+                crawl[neighbour] = current_node
                 queue.append(neighbour)
 
-    nodes_of_B_on_path = 0
-    for node in shortest_path:
-      if node in B:
-        nodes_of_B_on_path += 1
-
-    return nodes_of_B_on_path
 
 
 

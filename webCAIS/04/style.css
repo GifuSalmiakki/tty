@@ -1,0 +1,42 @@
+body {
+  text-align: center;  
+}
+
+header {
+  background-color: bisque;
+}
+
+h2 {
+  display: flex;
+  justify-content: flex-start;
+  font-size: medium;
+  width: 20%;
+  float: inline-start;
+}
+
+nav {
+  font-size: 0%;
+}
+
+th {
+  font-size: bold;
+  background-color: bisque;
+}
+
+table {
+  height: 600px;
+  width: 20%;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  float: left;
+  overflow: scroll;
+}
+
+footer {
+  background-color: bisque;
+  display: flex;
+  justify-content: flex-end;
+  align-self: center;
+  
+}
