@@ -1,0 +1,101 @@
+H3
+
+T1.
+a)
+TODO: kirjota kunnolla
+Keskimäärin yliopistoon päässeillä on jo monta koulutusvuotta ja palkka vaihtelee alakohtaisesti VS vain peruskoulun käyneet verrattuna esim. lääkäriin
+
+b)
+
+
+T2.
+a) Luetaan aineisto tiedostosta
+```{r}
+aineisto<-read.table("aineistoH31.txt", header=T)
+aineisto
+```
+b) Tallennetaan muuttujat omiin vektoreihinsa
+```{r}
+PSI<-aineisto$PSI
+MT<-aineisto$MT
+PSI
+MT
+```
+c)
+```{r}
+boxplot(PSI~MT)
+```
+d)
+```{r}
+aggregate(PSI~MT, FUN = mean)
+```
+e)
+Paras puristusvoima saavutetaan sekoitusmenetelmällä 2, jonka otoskeskiarvo on selkeästi muita parempi. Puolestaan menetelmä 4 vaikuttaa kaikista heikoimmalta, sillä sen paraskin arvo (luokkakohtainen maksimi) jää muiden menetelmien minimien alle.
+
+T3.
+a) Varianssianalyysi 
+```{r}
+malli=aov(PSI~factor(MT))
+malli
+summary(malli)
+```
+b) F-testisuureen arvon laskeminen neliösummilla, jotka poimitaan ylemmästä syötteestä 
+F = (LNS/m-1)/(JNS/n-m), missä 
+n on luokkaan kuuluvien havaintojen luḱumäärä ja
+m on luokkien lukumäärä vähennettynä yhdellä
+```{r}
+LNS = 489740 # factor(MT) Sum sq
+JNS = 153908 # Residuals Sum sq
+m = 4
+n = 16
+F = (LNS/(m-1))/(JNS/(n-m))
+F
+```
+Lasketaan F-testisuuretta vastaava p-arvo
+```{r}
+pf(F,3,12,lower.tail = FALSE) # pf(F, m-1, m-n)
+```
+Sekä F- että p-arvot ovat likimain samat, kuin tulosteessa.
+
+c)
+Luokissa on tilastollisesti merkittävä ero ja PSI:n odotusarvot eivät ole kaikissa luokissa samat.
+
+T4.
+a) ja b)
+```{r}
+aineisto2<-read.table("aineistoH32.txt", header=T)
+MT1=aineisto2$MT1
+MT2=aineisto2$MT2
+MT3=aineisto2$MT3
+
+regressiomalli = lm(PSI~MT1+MT2+MT3)
+summary(regressiomalli)
+```
+c)
+Lineaarinen regressiomalli on merkitsevä ja sen F-testisuureen arvo sekä p-arvo vastaavat varianssianalyysi arvoja.
+
+d)
+TODO
+
+T5.
+```{r}
+aineisto3<-read.table("aineistoH33.txt", header=T)
+
+paino<-aineisto3$Paino
+tilavuus<-aineisto3$Tilavuus
+painoMalli = lm(tilavuus~paino)
+summary(painoMalli)
+```
+b)
+```{r}
+predict(painoMalli, data.frame(paino=14))
+```
+c) 
+```{r}
+predict(painoMalli, data.frame(paino=14), interval="confidence", level=0.95)
+```
+d)
+```{r}
+predict(painoMalli, data.frame(paino=14), interval="prediction", level=0.95)
+```
+
